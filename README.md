@@ -5,8 +5,9 @@ Multi Select Nested is a package with nested options support for Flutter.
 
 
 
-| <img src="./example/assets/demonstration_files/example_1.gif" width="200"/><br /><sub><b>General Use</b></sub> | <img src="./example/assets/demonstration_files/example_2.gif" width="200"/><br /><sub><b>Ready-to-use controller</b></sub> | <img src="./example/assets/demonstration_files/example_3.gif" width="200"/><br /><sub>Pass <strong>AnimatedContainer: true</strong> to use animations</sub> | <img src="./example/assets/demonstration_files/example_4.gif" width="200"/><br /><sub><b>Fully customizable</b></sub>
-|:--------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:| :---: |
+
+| <img src="https://raw.githubusercontent.com/GiuseppeSperanza/multiselect_nested/main/example/assets/demonstration_files/example_1.gif" width="200"/><br /><sub><b>General Use</b></sub> | <img src="https://raw.githubusercontent.com/GiuseppeSperanza/multiselect_nested/main/example/assets/demonstration_files/example_2.gif" width="200"/><br /><sub><b>Ready-to-use controller</b></sub> | <img src="https://raw.githubusercontent.com/GiuseppeSperanza/multiselect_nested/main/example/assets/demonstration_files/example_3.gif" width="200"/><br /><sub>Pass <strong>AnimatedContainer: true</strong> to use animations</sub> | <img src="https://raw.githubusercontent.com/GiuseppeSperanza/multiselect_nested/main/example/assets/demonstration_files/example_4.gif" width="200"/><br /><sub><b>Fully customizable</b></sub>
+| :---: |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:| :---: |
 
 
 
@@ -40,7 +41,7 @@ If you want you can create a MultiSelectNestedController to pass as a prop
 ```dart
 import 'package:multiselect_nested/models/multiselect_nested.dart';
 
- MultiSelectNestedController multiSelectController = MultiSelectNestedController();
+MultiSelectNestedController multiSelectController = MultiSelectNestedController();
 ```
 
 You can also import the Model: `multiselect_nested_item `, helpful to use the correct interface when passing the options and the pre-selected items to the library
