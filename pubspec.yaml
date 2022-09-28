@@ -1,6 +1,6 @@
 name: multiselect_tree
 description: A simple multiselect dropdown which can contains differents level of children.
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/GiuseppeSperanza/multiselect_tree
 
 environment:

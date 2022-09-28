@@ -1,3 +1,7 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+First Implementation of MultiSelect Tree
+
+## 1.0.0
+
+First Stable Version
