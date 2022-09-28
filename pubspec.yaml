@@ -1,7 +1,8 @@
 name: multiselect_tree
-description: A simple multiselect dropdown which can contains differents level of children.
+description: A simple multiselect dropdown with nested options support for Flutter.
 version: 1.0.0
 homepage: https://github.com/GiuseppeSperanza/multiselect_tree
+author: Giuseppe Speranza<giuseppesperanza.dev>
 
 environment:
   sdk: '>=2.18.1 <3.0.0'
