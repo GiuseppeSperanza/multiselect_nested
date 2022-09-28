@@ -133,9 +133,9 @@ FutureBuilder<List<MultiSelectTreeItem>>(
 .
 ```
 
-# See the complete example in the example folder
+# See the complete example 
 
-<a href="https://github.com/GiuseppeSperanza/multiselect_tree/tree/main/example" target="_blank">Example</a>
+<a href="https://github.com/GiuseppeSperanza/multiselect_tree/blob/main/example/lib/main.dart" target="_blank">Example</a>
 
 
 ### Constructor
