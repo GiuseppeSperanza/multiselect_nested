@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MultiSelectTreeTestComponent extends StatelessWidget {
-  const MultiSelectTreeTestComponent({
+class MultiSelectNestedTestComponent extends StatelessWidget {
+  const MultiSelectNestedTestComponent({
     super.key,
     required this.child,
   });
@@ -11,7 +11,7 @@ class MultiSelectTreeTestComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Multi Select Tree test Component',
+      title: 'Multi Select Nested test Component',
       home: Scaffold(
         body: Center(
           child: child,

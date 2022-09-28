@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:multiselect_tree/models/multiselect_tree_controller.dart';
-import 'package:multiselect_tree/models/multiselect_tree_item.dart';
-import 'package:multiselect_tree/multiselect_tree.dart';
+
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:multiselect_nested/models/multiselect_nested_controller.dart';
+import 'package:multiselect_nested/models/multiselect_nested_item.dart';
+import 'package:multiselect_nested/multiselect_nested.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,12 +32,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<MultiSelectTreeItem> selected = [];
-  MultiSelectTreeController multiSelectController = MultiSelectTreeController();
+  List<MultiSelectNestedItem> selected = [];
+  MultiSelectNestedController multiSelectController =
+      MultiSelectNestedController();
 
-  Future<List<MultiSelectTreeItem>> getJson() async {
+  Future<List<MultiSelectNestedItem>> getJson() async {
     var data = await rootBundle.loadString('assets/example_data.json');
-    return multiSelectItemsFromJson(data);
+    return multiSelectNestedFromJson(data);
   }
 
   @override
@@ -50,10 +52,10 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
-                FutureBuilder<List<MultiSelectTreeItem>>(
+                FutureBuilder<List<MultiSelectNestedItem>>(
                   future: getJson(),
                   builder: (BuildContext context,
-                      AsyncSnapshot<List<MultiSelectTreeItem>> snapshot) {
+                      AsyncSnapshot<List<MultiSelectNestedItem>> snapshot) {
                     switch (snapshot.connectionState) {
                       case ConnectionState.waiting:
                         return const Text('Loading....');
@@ -63,14 +65,14 @@ class _HomeState extends State<Home> {
                         } else {
                           return Column(
                             children: [
-                              MultiSelectTree(
+                              MultiSelectNested(
                                 controller: multiSelectController,
                                 options: snapshot.data!,
                                 selectedValues: selected,
                                 isAnimatedContainer: false,
                                 liveUpdateValues: false,
                                 setSelectedValues:
-                                    (List<MultiSelectTreeItem> newValues) {
+                                    (List<MultiSelectNestedItem> newValues) {
                                   setState(() {
                                     selected = newValues;
                                   });
@@ -113,7 +115,7 @@ class _HomeState extends State<Home> {
                 selected.isNotEmpty
                     ? Column(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: selected.map((MultiSelectTreeItem item) {
+                        children: selected.map((MultiSelectNestedItem item) {
                           return Text(item.name);
                         }).toList(),
                       )

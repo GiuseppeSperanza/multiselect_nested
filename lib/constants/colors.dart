@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MultiSelectTreeColors {
+class MultiSelectNestedColors {
   static const Color PRIMARY = Colors.black;
   static const Color PRIMARY_LIGHT_COLOR = Colors.black12;
   static const Color PRIMARY_LIGHT_COLOR_01 = Colors.black54;

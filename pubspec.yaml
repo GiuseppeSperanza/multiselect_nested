@@ -1,7 +1,7 @@
-name: multiselect_tree
+name: multiselect_nested
 description: A simple multiselect dropdown with nested options support for Flutter.
 version: 1.0.0
-homepage: https://github.com/GiuseppeSperanza/multiselect_tree
+homepage: https://github.com/GiuseppeSperanza/multiselect_nested
 # author: Giuseppe Speranza<giuseppesperanza.dev>
 
 environment:
