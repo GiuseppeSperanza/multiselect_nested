@@ -31,30 +31,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  /*List<MultiSelectTreeItem> selected = [
-    MultiSelectTreeItem(
-      id: 1,
-      name: 'Valore Selezionato 1',
-      children: [],
-    ),
-    MultiSelectTreeItem(
-      id: 2,
-      name: 'Valore Selezionato 2 ',
-      children: [],
-    ),
-  ];*/
   List<MultiSelectTreeItem> selected = [];
   MultiSelectTreeController multiSelectController = MultiSelectTreeController();
 
   Future<List<MultiSelectTreeItem>> getJson() async {
     var data = await rootBundle.loadString('assets/example_data.json');
     return multiSelectItemsFromJson(data);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getJson();
   }
 
   @override

@@ -8,12 +8,12 @@ import 'package:multiselect_tree/models/multiselect_tree_item.dart';
 
 class MultiSelectTree extends StatefulWidget {
   ///
-  /// The options form which a user can select
+  /// The options which a user can see and select
   ///
   final List<MultiSelectTreeItem> options;
 
   ///
-  /// Selected Values
+  /// Preselected options
   ///
   final List<MultiSelectTreeItem> selectedValues;
 
@@ -35,7 +35,7 @@ class MultiSelectTree extends StatefulWidget {
   ///
   /// Use this controller to get access to internal state of the Multiselect
   ///
-  final MultiSelectTreeController controller;
+  final MultiSelectTreeController? controller;
 
   ///
   /// Padding Dropdown content
@@ -48,56 +48,54 @@ class MultiSelectTree extends StatefulWidget {
   final EdgeInsets paddingSelectedItems;
 
   ///
-  /// Set to true to use an Animated container
+  /// Set to true to use an Animated container which can accept Curve's effects
   ///
   final bool isAnimatedContainer;
 
   ///
-  /// Effect Animated Container
+  /// Customize the effect of the animated container
   ///
   final Curve effectAnimatedContainer;
 
   ///
-  /// Duration Effect Animated Container
+  /// Duration of the Effect of the Animated Container
   ///
   final Duration durationEffect;
 
+  ///
   /// Height of the Animated Container
-  ///
-  ///
-  /// This value is only available with the Animated Container
-  /// which requires a specific height.
-  /// if it is not set, will be used the default height as value
+  /// This value is only read with the Animated Container set to true because it requires a specific height to work.
+  /// If it is not set, will be used the default height as value.
   ///
   final double heightDropdownContainer;
 
   ///
-  /// Overwrite the default value of the animated container
+  /// Overwrite the default height of the animated container
   ///
   final double heightDropdownContainerDefault;
 
   ///
-  /// Background Color Dropdown
+  /// Background Color of the Collapsible Dropdown
   ///
   final Color dropdownContainerColor;
 
   ///
-  /// Background Color Selected Items
+  /// Background Color of the Selected Items
   ///
   final Color selectedItemColor;
 
   ///
-  /// Color of the divider of the selected items
+  /// Color of the divider between the selected items
   ///
   final Color selectedItemDividerColor;
 
   ///
-  /// Color of icon when item is collapsed
+  /// Color of icon when items are collapsed
   ///
   final Color collapsedIconColor;
 
   ///
-  /// Color of the row of selected items
+  /// Color of the row of the selected items
   ///
   final Color selectedItemsRowColor;
 
@@ -112,14 +110,14 @@ class MultiSelectTree extends StatefulWidget {
   final TextStyle noItemsTextStyle;
 
   ///
-  /// Text Style of the labels inside the dropdwon
+  /// Text Style of the labels inside the dropdown
   ///
   final TextStyle styleDropdownItemName;
 
   const MultiSelectTree({
     super.key,
     required this.options,
-    required this.controller,
+    this.controller,
     this.setSelectedValues,
     this.selectedValues = const <MultiSelectTreeItem>[],
     this.isAnimatedContainer = false,
@@ -159,10 +157,13 @@ class _MultiSelectTreeState extends State<MultiSelectTree> {
   void initState() {
     super.initState();
     _height = widget.heightDropdownContainer;
+
     _localSelectedOptions.addAll(widget.selectedValues);
-    widget.controller.getSelectedItems = getSelectedItems;
-    widget.controller.expandContainer = expandContainer;
-    widget.controller.clearValues = clearValues;
+    if (widget.controller != null) {
+      widget.controller!.getSelectedItems = getSelectedItems;
+      widget.controller!.expandContainer = expandContainer;
+      widget.controller!.clearValues = clearValues;
+    }
   }
 
   List<MultiSelectTreeItem> getSelectedItems() {
