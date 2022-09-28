@@ -5,8 +5,8 @@ Multi Select Nested is a package with nested options support for Flutter.
 
 
 
-| <img src="https://github.com/GiuseppeSperanza/multiselect_nested/blob/main/example/assets/demonstration_files/example_1.gif" width="200"/><br /><sub><b>General Use</b></sub> | <img src="https://github.com/GiuseppeSperanza/multiselect_nested/blob/main/example/assets/demonstration_files/example_2.gif" width="200"/><br /><sub><b>Ready-to-use controller</b></sub> | <img src="https://github.com/GiuseppeSperanza/multiselect_nested/blob/main/example/assets/demonstration_files/example_3.gif" width="200"/><br /><sub>Pass <strong>AnimatedContainer: true</strong> to use animations</sub> | <img src="https://github.com/GiuseppeSperanza/multiselect_nested/blob/main/example/assets/demonstration_files/example_4.gif" width="200"/><br /><sub><b>Fully customizable</b></sub>
-| :---: | :---: | :---: | :---: |
+| <img src="./example/assets/demonstration_files/example_1.gif" width="200"/><br /><sub><b>General Use</b></sub> | <img src="./example/assets/demonstration_files/example_2.gif" width="200"/><br /><sub><b>Ready-to-use controller</b></sub> | <img src="./example/assets/demonstration_files/example_3.gif" width="200"/><br /><sub>Pass <strong>AnimatedContainer: true</strong> to use animations</sub> | <img src="./example/assets/demonstration_files/example_4.gif" width="200"/><br /><sub><b>Fully customizable</b></sub>
+|:--------------------------------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:| :---: |
 
 
 
