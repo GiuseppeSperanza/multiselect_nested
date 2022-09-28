@@ -1,7 +1,7 @@
 
 # Multi Select Tree
 
-Multi Select Tree is a package which allow to create with nested options support for Flutter.
+Multi Select Tree is a package with nested options support for Flutter.
 
 
 
