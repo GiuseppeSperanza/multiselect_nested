@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "name": "Option 1 with children tree",
+    "children": [
+      {
+        "id": 11,
+        "name": "Option 1 - first Children",
+        "children": [
+          {
+            "id": 111,
+            "name": "Option 1 - second hierarchical child",
+            "children": [
+              {
+                "id": 1111,
+                "name": "Option 1 - third hierarchical child",
+                "children": [
+                  {
+                    "id": 1111,
+                    "name": "Option 1 - fourth hierarchical child",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Option 1 - second Children"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Option 2 without children"
+  },
+  {
+    "id": 3,
+    "name": "Option 3 with two children",
+    "children": [
+      {
+        "id": 31,
+        "name": "Option 3 - First Children"
+      },
+      {
+        "id": 32,
+        "name": "Option 3 - Second Children"
+      }
+    ]
+  }
+]
