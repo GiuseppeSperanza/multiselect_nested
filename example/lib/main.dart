@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:multiselect_nested/models/multiselect_nested_controller.dart';
 import 'package:multiselect_nested/models/multiselect_nested_item.dart';
@@ -71,6 +70,7 @@ class _HomeState extends State<Home> {
                                 selectedValues: selected,
                                 isAnimatedContainer: false,
                                 liveUpdateValues: false,
+                                checkParentWhenChildIsSelected: true,
                                 setSelectedValues:
                                     (List<MultiSelectNestedItem> newValues) {
                                   setState(() {

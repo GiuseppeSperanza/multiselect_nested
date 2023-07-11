@@ -34,6 +34,12 @@ class MultiSelectNested extends StatefulWidget {
   final bool liveUpdateValues;
 
   ///
+  /// Add a partial check to the parent when one of his child is selected
+  /// Be careful this works only with not multi hierarchical child
+  ///
+  final bool checkParentWhenChildIsSelected;
+
+  ///
   /// Use this controller to get access to internal state of the Multiselect
   ///
   final MultiSelectNestedController? controller;
@@ -123,6 +129,7 @@ class MultiSelectNested extends StatefulWidget {
     this.selectedValues = const <MultiSelectNestedItem>[],
     this.isAnimatedContainer = false,
     this.liveUpdateValues = false,
+    this.checkParentWhenChildIsSelected = false,
     this.paddingDropdown = const EdgeInsets.all(8),
     this.paddingSelectedItems = const EdgeInsets.all(8),
     this.effectAnimatedContainer = Curves.fastOutSlowIn,
@@ -241,7 +248,6 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
     setState(() {
       MultiSelectNestedItem selectedValue = options.firstWhere(
           (MultiSelectNestedItem element) => element.name == item.name);
-      // Set parent to true
       selectedValue.setSelected(!item.isSelected);
       _addSelectedValue(item);
       recursiveCheckSelected(item);
@@ -275,7 +281,9 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
       selectedItem.setSelected(!item.isSelected);
       _addSelectedValue(selectedItem);
 
-      _checkParentSelected(item, level);
+      if (widget.checkParentWhenChildIsSelected) {
+        _checkParentSelected(item, level);
+      }
     });
     updateValues();
   }

@@ -140,28 +140,29 @@ FutureBuilder<List<MultiSelectNestedItem>>(
 
 ### Constructor
 
-| Parameter | Type                                     | Description |
-|---|------------------------------------------|---
-| `options` | List< MultiSelectNestedItem >            | The options which a user can see and select. |
-| `selectedValues` | List< MultiSelectNestedItem >            | Preselected options. |
-| `setSelectedValues` | Function(List< MultiSelectNestedItem >)? |   Callback to pass the selectedValues to the parent. It's triggered when you add or remove elements from the selected items. Only works with the liveUpdateValues set to true |
-| `liveUpdateValues` | bool                                     | Set to true if you want a live update of the values. Be careful because it will trigger e rebuild on every added or removed element from the selectedValues which remove the smooth effect from the dropdown container.|
-| `controller` | MultiSelectNestedController              | Use this controller to get access to internal state of the Multiselect. |
-| `paddingDropdown` | EdgeInsets                               | Padding Dropdown content. |
-| `paddingSelectedItems` | EdgeInsets                               | Padding Row Selected Items. |
-| `isAnimatedContainer` | bool                                     | Set to true to use an Animated container which can accept Curve's effects. |
-| `effectAnimatedContainer` | Curve                                    |  Customize the effect of the animated container. |
-| `durationEffect` | Duration                                 |  Duration of the Effect of the Animated Container. |
-| `heightDropdownContainer` | double                                   |  Height of the Animated Container. This value is only read with the Animated Container set to true because it requires a specific height to work. If it is not set, will be used the default height as value. |
-| `heightDropdownContainerDefault` | Duration                                 |  Overwrite the default height of the animated container. |
-| `dropdownContainerColor` | Color                                    |  Background Color of the Collapsible Dropdown. |
-| `selectedItemColor` | Color                                    |  Background Color of the Selected Items. |
-| `selectedItemDividerColor` | Color                                    |  Color of the divider between the selected items. |
-| `collapsedIconColor` | Color                                    |  Color of icon when items are collapsed. |
-| `selectedItemsRowColor` | Color                                    |  Color of the row of the selected items. |
-| `noItemsText` | String                                   |  Text to display in case of no items are provided. |
-| `noItemsTextStyle` | TextStyle                                | Text Style of noItemsText. |
-| `styleDropdownItemName` | TextStyle                                | Text Style of the labels inside the dropdown. |
+| Parameter | Type                                     | Description                                                                                                                                                                                                             |
+|---|------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| `options` | List< MultiSelectNestedItem >            | The options which a user can see and select.                                                                                                                                                                            |
+| `selectedValues` | List< MultiSelectNestedItem >            | Preselected options.                                                                                                                                                                                                    |
+| `setSelectedValues` | Function(List< MultiSelectNestedItem >)? | Callback to pass the selectedValues to the parent. It's triggered when you add or remove elements from the selected items. Only works with the liveUpdateValues set to true                                             |
+| `liveUpdateValues` | bool                                     | Set to true if you want a live update of the values. Be careful because it will trigger e rebuild on every added or removed element from the selectedValues which remove the smooth effect from the dropdown container. |
+| `checkParentWhenChildIsSelected` | bool                                     | Add a partial check to the parent when one of his child is selected. Be careful this works only with not multi hierarchical child                                                                                       |
+| `controller` | MultiSelectNestedController              | Use this controller to get access to internal state of the Multiselect.                                                                                                                                                 |
+| `paddingDropdown` | EdgeInsets                               | Padding Dropdown content.                                                                                                                                                                                               |
+| `paddingSelectedItems` | EdgeInsets                               | Padding Row Selected Items.                                                                                                                                                                                             |
+| `isAnimatedContainer` | bool                                     | Set to true to use an Animated container which can accept Curve's effects.                                                                                                                                              |
+| `effectAnimatedContainer` | Curve                                    | Customize the effect of the animated container.                                                                                                                                                                         |
+| `durationEffect` | Duration                                 | Duration of the Effect of the Animated Container.                                                                                                                                                                       |
+| `heightDropdownContainer` | double                                   | Height of the Animated Container. This value is only read with the Animated Container set to true because it requires a specific height to work. If it is not set, will be used the default height as value.            |
+| `heightDropdownContainerDefault` | Duration                                 | Overwrite the default height of the animated container.                                                                                                                                                                 |
+| `dropdownContainerColor` | Color                                    | Background Color of the Collapsible Dropdown.                                                                                                                                                                           |
+| `selectedItemColor` | Color                                    | Background Color of the Selected Items.                                                                                                                                                                                 |
+| `selectedItemDividerColor` | Color                                    | Color of the divider between the selected items.                                                                                                                                                                        |
+| `collapsedIconColor` | Color                                    | Color of icon when items are collapsed.                                                                                                                                                                                 |
+| `selectedItemsRowColor` | Color                                    | Color of the row of the selected items.                                                                                                                                                                                 |
+| `noItemsText` | String                                   | Text to display in case of no items are provided.                                                                                                                                                                       |
+| `noItemsTextStyle` | TextStyle                                | Text Style of noItemsText.                                                                                                                                                                                              |
+| `styleDropdownItemName` | TextStyle                                | Text Style of the labels inside the dropdown.                                                                                                                                                                           |
 
 .
 .
