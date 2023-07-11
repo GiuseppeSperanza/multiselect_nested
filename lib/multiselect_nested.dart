@@ -1,5 +1,6 @@
 library multiselect_nested_options;
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:multiselect_nested/components/selected_value_item.dart';
 import 'package:multiselect_nested/constants/colors.dart';
@@ -152,6 +153,7 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
   bool isExpanded = false;
   late double _height;
   final List<MultiSelectNestedItem> _localSelectedOptions = [];
+  final Set<MultiSelectNestedItem> _checkedParent = <MultiSelectNestedItem>{};
 
   @override
   void initState() {
@@ -177,6 +179,7 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
         element.setSelected(!element.isSelected);
       }
       _localSelectedOptions.clear();
+      _checkedParent.clear();
       updateValues();
     });
   }
@@ -239,7 +242,6 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
       MultiSelectNestedItem selectedValue = options.firstWhere(
           (MultiSelectNestedItem element) => element.name == item.name);
       // Set parent to true
-
       selectedValue.setSelected(!item.isSelected);
       _addSelectedValue(item);
       recursiveCheckSelected(item);
@@ -264,16 +266,63 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
     }
   }
 
-  Future<void> _onChangeElement(options, item) async {
+  Future<void> _onChangeElement(List<MultiSelectNestedItem> options,
+      MultiSelectNestedItem item, int level) async {
     setState(() {
       MultiSelectNestedItem selectedItem = options.firstWhere(
           (MultiSelectNestedItem element) => element.name == item.name);
 
       selectedItem.setSelected(!item.isSelected);
-
       _addSelectedValue(selectedItem);
+
+      _checkParentSelected(item, level);
     });
     updateValues();
+  }
+
+  _checkParentSelected(MultiSelectNestedItem item, int level) {
+    if (level > 0) {
+      MultiSelectNestedItem? selectedParent;
+      for (MultiSelectNestedItem parent in widget.options) {
+        for (MultiSelectNestedItem children in parent.children) {
+          if (item.id == children.id) {
+            selectedParent = parent;
+          }
+        }
+      }
+
+      MultiSelectNestedItem? isParentSelected = _localSelectedOptions
+          .firstWhereOrNull((MultiSelectNestedItem element) =>
+              element.id == selectedParent!.id);
+
+      if (isParentSelected == null &&
+          !_checkedParent.contains(selectedParent)) {
+        _checkedParent.add(selectedParent!);
+      } else {
+        List<MultiSelectNestedItem> parentChild = selectedParent!.children;
+        bool isPresent = false;
+        int childPresent = 0;
+        for (MultiSelectNestedItem child in parentChild) {
+          if (_localSelectedOptions.contains(child)) {
+            isPresent = true;
+            childPresent += 1;
+          }
+        }
+        if (!isPresent) {
+          _checkedParent.remove(selectedParent);
+        }
+        if (childPresent == parentChild.length) {
+          _checkedParent.remove(selectedParent);
+          _localSelectedOptions.add(selectedParent);
+        }
+        if (childPresent > 0 && childPresent < parentChild.length) {
+          _checkedParent.add(selectedParent);
+          _localSelectedOptions.remove(selectedParent);
+        }
+
+        childPresent = 0;
+      }
+    }
   }
 
   List<Widget> _buildContentDropdown(
@@ -285,10 +334,32 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
           child: ExpansionTile(
             tilePadding: const EdgeInsets.all(0),
             iconColor: widget.collapsedIconColor,
-            leading: Checkbox(
-              value: _checkIsSelected(item),
-              onChanged: (bool? value) =>
-                  onChangeMultiChildrenElement(options, item),
+            leading: Stack(
+              children: [
+                Checkbox(
+                  value: _checkIsSelected(item),
+                  onChanged: (bool? value) =>
+                      onChangeMultiChildrenElement(options, item),
+                ),
+                _checkedParent.contains(item)
+                    ? Positioned(
+                        top: 15,
+                        left: 15,
+                        child: Container(
+                          height: 18,
+                          width: 18,
+                          color: Colors.blue,
+                          child: const Center(
+                            child: Icon(
+                              Icons.horizontal_rule,
+                              color: Colors.white,
+                              size: 15,
+                            ),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
+              ],
             ),
             title: Text(
               item.name,
@@ -308,7 +379,11 @@ class _MultiSelectNestedState extends State<MultiSelectNested> {
             ),
             leading: Checkbox(
               value: _checkIsSelected(item),
-              onChanged: (bool? value) => _onChangeElement(options, item),
+              onChanged: (bool? value) => _onChangeElement(
+                options,
+                item,
+                level,
+              ),
             ),
           ),
         ); //
